@@ -1,0 +1,4 @@
+interface:
+  display_name: "Research Survey Loop"
+  short_description: "Long-running robotics and embodied AI survey workflow"
+  default_prompt: "Use $research-survey-loop to create or continue a long-running robotics and embodied AI survey task in this workspace."
