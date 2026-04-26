@@ -1,50 +1,35 @@
-# research_survey_loop
+# my_codex_skills
 
-English version: [README.md](./README.md)
+[English](./README.md) | 中文
 
-`research_survey_loop` 是一个用于长期、多轮调研流程的 Codex skill 仓库。
-它主要面向 Robotics、Embodied AI、计算机视觉、world models、navigation、manipulation 及其相邻方向。
+这是我个人维护的 Codex Skills 集合，用来沉淀可复用的科研工作流。
 
-真正可安装的 skill 位于 [research-survey-loop/](./research-survey-loop/)。
+每个顶层 skill 文件夹都会保留自己的 README 文档，并在内部包含真正可安装的 `SKILL.md` 目录。
 
-## 快速开始
+## Skills
 
-把这个 skill 复制到 `$CODEX_HOME/skills/`：
+| Skill | 中文简介 | 典型用途 | 可安装目录 |
+| --- | --- | --- | --- |
+| [`mock-review`](./mock-review/) | 给论文作者使用的模拟审稿工具；按指定会议或期刊调研官方要求，检查稿件 PDF 材料风险，调研相关文献和实验对比，并生成用于准备 rebuttal、发现论文风险和改进论文的模拟审稿意见。 | 投稿前风险排查、rebuttal 准备、论文修改前的 reviewer-style critique。 | [`mock-review/mock-review`](./mock-review/mock-review/) |
+| [`research-survey-loop`](./research-survey-loop/) | 长周期文献综述工作流；创建或继续综述任务，维护 `task.md`、`round_log.md`、`current_task.md` 和 `survey.md`，按来源优先级搜索论文，迁移本地 PDF，并逐轮扩展中文综述。 | 机器人、具身智能、计算机视觉、世界模型、导航、操作、3D 感知等方向的持续文献调研。 | [`research-survey-loop/research-survey-loop`](./research-survey-loop/research-survey-loop/) |
 
-```bash
-cp -R research-survey-loop "$CODEX_HOME/skills/"
+## 安装
+
+把真正可安装的 skill 目录复制到 Codex skills 目录即可。
+
+```powershell
+# 安装 mock-review
+Copy-Item -Recurse -Force .\mock-review\mock-review "$env:USERPROFILE\.codex\skills\mock-review"
+
+# 安装 research-survey-loop
+Copy-Item -Recurse -Force .\research-survey-loop\research-survey-loop "$env:USERPROFILE\.codex\skills\research-survey-loop"
 ```
 
-然后给 Codex 发消息，要求它使用 `$research-survey-loop` 调研某个主题；如果你本地已经有笔记、PDF 或初步结果，也可以一起提供。
+如果你设置了 `CODEX_HOME`，也可以复制到 `$env:CODEX_HOME\skills\`。
 
-```text
-Use $research-survey-loop to survey recent work on world models for embodied navigation.
-I also have some local notes and PDFs in this workspace. Start round 1.
-```
+## 说明
 
-## 工作方式
-
-1. 用户发送调研主题，并可附带本地已有资料。
-2. Codex 创建或继续一个持久化的 survey task。
-3. Codex 按多个 round 推进。不同 round 可能分别负责检索资料、阅读论文、吸收本地材料、整理分类、扩写综述。
-4. 后续用户再告诉 Codex 当前继续哪个 round，或者直接让它继续下一轮。
-
-示例后续消息：
-
-```text
-Continue round 2 for the same topic based on current_task.md and round_log.md.
-```
-
-## 输出
-
-这个 skill 会在 `survey_tasks/<topic-slug>/` 下维护一个持续演进的流程，并持续更新：
-
-- `task.md`
-- `round_log.md`
-- `current_task.md`
-- `survey.md`
-
-## 仓库结构
-
-- `README.md` 和 `README.zh-CN.md`：仓库说明文档
-- `research-survey-loop/`：真正用于安装的 Codex skill
+- 这些 skills 是个人科研工作流沉淀，不代表任何会议、期刊或机构的官方流程。
+- 使用 `mock-review` 生成的内容应明确标注为 simulated/mock review，不能替代真实同行评审，也不能冒充官方审稿意见。
+- 文献下载和调研应优先使用官方开放页面、arXiv、OpenReview、作者主页等合法可访问来源。
+- 每个 skill 的具体说明请阅读对应 skill 文件夹内的 README 文档。

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Mock Review"
+  short_description: "Mock peer review for manuscript authors preparing submissions and rebuttals"
+  default_prompt: "Use $mock-review to perform a mock review for the authors of this manuscript according to the specified venue or journal."

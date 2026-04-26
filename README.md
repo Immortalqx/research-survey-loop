@@ -1,50 +1,35 @@
-# research_survey_loop
+# my_codex_skills
 
-Chinese version: [README.zh-CN.md](./README.zh-CN.md)
+English | [中文](./README.zh-CN.md)
 
-`research_survey_loop` is a Codex skill repository for long-running, multi-round survey workflows.
-It is mainly tuned for Robotics, Embodied AI, computer vision, world models, navigation, manipulation, and nearby topics.
+This repository collects my personal Codex skills for reusable research workflows.
 
-The installable skill is in [research-survey-loop/](./research-survey-loop/).
+Each top-level skill folder keeps its own README files and contains an installable skill directory with `SKILL.md`.
 
-## Quick Start
+## Skills
 
-Copy the skill into `$CODEX_HOME/skills/`:
+| Skill | Summary | Typical Use | Installable Directory |
+| --- | --- | --- | --- |
+| [`mock-review`](./mock-review/) | Mock peer-review workflow for manuscript authors. It researches venue or journal requirements, inspects manuscript PDFs, studies related literature and experimental baselines, and writes a simulated review for rebuttal preparation and paper improvement. | Pre-submission risk check, rebuttal preparation, reviewer-style critique before revising a manuscript. | [`mock-review/mock-review`](./mock-review/mock-review/) |
+| [`research-survey-loop`](./research-survey-loop/) | Long-running literature survey workflow. It creates or resumes survey tasks, maintains stable task documents, searches prioritized sources, migrates local PDFs, reads papers in chunks, and incrementally writes a Chinese survey. | Sustained literature surveys for robotics, embodied AI, computer vision, world models, navigation, manipulation, 3D perception, and adjacent topics. | [`research-survey-loop/research-survey-loop`](./research-survey-loop/research-survey-loop/) |
 
-```bash
-cp -R research-survey-loop "$CODEX_HOME/skills/"
+## Install
+
+Copy the installable skill directory into your Codex skills directory.
+
+```powershell
+# Install mock-review
+Copy-Item -Recurse -Force .\mock-review\mock-review "$env:USERPROFILE\.codex\skills\mock-review"
+
+# Install research-survey-loop
+Copy-Item -Recurse -Force .\research-survey-loop\research-survey-loop "$env:USERPROFILE\.codex\skills\research-survey-loop"
 ```
 
-Then ask Codex to use `$research-survey-loop` for a topic and include any local notes, PDFs, or early findings if available.
+If `CODEX_HOME` is configured, copy the folders into `$env:CODEX_HOME\skills\` instead.
 
-```text
-Use $research-survey-loop to survey recent work on world models for embodied navigation.
-I also have some local notes and PDFs in this workspace. Start round 1.
-```
+## Notes
 
-## How It Works
-
-1. The user sends a prompt with a survey topic and optional local materials.
-2. Codex creates or resumes a persistent survey task.
-3. Codex works round by round. Different rounds may search sources, read papers, absorb local materials, refine categories, and expand the survey.
-4. The user later tells Codex which round to continue, or asks it to continue the next round.
-
-Example follow-up:
-
-```text
-Continue round 2 for the same topic based on current_task.md and round_log.md.
-```
-
-## Output
-
-The skill maintains a persistent workflow under `survey_tasks/<topic-slug>/` and updates:
-
-- `task.md`
-- `round_log.md`
-- `current_task.md`
-- `survey.md`
-
-## Repository Layout
-
-- `README.md` and `README.zh-CN.md`: repository docs
-- `research-survey-loop/`: the installable Codex skill
+- These skills encode personal research workflows and do not represent official processes of any venue, journal, or institution.
+- Outputs from `mock-review` should be clearly labeled as simulated/mock reviews. They must not replace real peer review or impersonate official reviewer reports.
+- Literature retrieval should prioritize legally accessible sources such as official open-access pages, arXiv, OpenReview, and author pages.
+- For details about a specific skill, read the README files inside that skill folder.
