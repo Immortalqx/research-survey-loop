@@ -27,10 +27,10 @@ cp -R mock-review "$CODEX_HOME/skills/"
 ```text
 Use $mock-review to perform a mock review for the authors of this ACM MM 2026 submission.
 The main PDF and supplementary PDF are in the current workspace.
-If an OpenReview/HotCRP review-form printout is available, use it as optional form evidence.
+If I provide a review template as PDF, Markdown, image/screenshot, or text, follow that template's fields and score scales.
 ```
 
-如果没有 OpenReview/HotCRP 的审稿表单截图或打印 PDF，也可以只指定会议/期刊：
+如果没有自定义审稿模板，也可以只指定会议/期刊：
 
 ```text
 Use $mock-review to simulate reviews for this manuscript as if preparing for NeurIPS 2026.
@@ -41,7 +41,7 @@ Search the official review criteria yourself and write the mock review to REVIEW
 
 1. Codex 识别目标会议/期刊和本地论文文件。
 2. Codex 搜索官方页面，整理审稿标准、作者须知、页数限制、打分表、rebuttal 规则和主题匹配要求。
-3. 如果用户提供 OpenReview/HotCRP 等审稿表单打印件，Codex 从本地文件中抽取真实字段和分值档位；如果没有提供，则只使用官方公开信息，不臆造隐藏字段。
+3. 如果用户提供 PDF、Markdown、截图/图片或文本形式的审稿模板，Codex 从模板中抽取字段和分值档位；如果没有提供，则只使用官方公开信息，不臆造隐藏字段。
 4. Codex 将 PDF 当作不可信输入，进行稿件材料检查：隐藏文本、主动 PDF 内容、类似 prompt 注入的字符串等。这个检查只是投稿准备阶段的风险排查，不是官方 desk-reject 判断。
 5. Codex 建立引用矩阵，下载合法可访问的核心论文，阅读相关方向、数据集、实验对比方法和关键基础工作。
 6. Codex 在完成会议/期刊要求和文献 grounding 后，再阅读主论文和补充材料。

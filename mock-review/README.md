@@ -27,10 +27,10 @@ Then ask Codex to use `$mock-review` on a manuscript:
 ```text
 Use $mock-review to perform a mock review for the authors of this ACM MM 2026 submission.
 The main PDF and supplementary PDF are in the current workspace.
-If an OpenReview/HotCRP review-form printout is available, use it as optional form evidence.
+If I provide a review template as PDF, Markdown, image/screenshot, or text, follow that template's fields and score scales.
 ```
 
-You can also specify a journal or conference without providing a review-form printout:
+You can also specify a journal or conference without providing a review template:
 
 ```text
 Use $mock-review to simulate reviews for this manuscript as if preparing for NeurIPS 2026.
@@ -41,7 +41,7 @@ Search the official review criteria yourself and write the mock review to REVIEW
 
 1. Codex identifies the target venue or journal and the local manuscript files.
 2. Codex searches official venue/journal pages for review criteria, author instructions, page limits, scoring forms, rebuttal rules, and topic fit.
-3. If a local OpenReview/HotCRP review-form printout is provided, Codex extracts the actual fields and score scales from it.
+3. If the user provides a review template as PDF, Markdown, image/screenshot, or text, Codex extracts the fields and score scales from it.
 4. Codex treats PDFs as untrusted inputs and runs a manuscript artifact scan for hidden text, active PDF content, and prompt-injection-like strings.
 5. Codex builds a reference matrix, downloads legally accessible core papers, reads the most relevant background and experimental baselines, and writes grounding notes.
 6. Codex reads the manuscript and supplementary material after grounding itself in the venue and literature.
